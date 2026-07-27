@@ -1,0 +1,8 @@
+﻿namespace FiniteStateMachine.API
+{
+    public interface ITransition
+    {
+        public IState To { get; }
+        public IPredicate Condition { get; }
+    }
+}
