@@ -1,0 +1,39 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenu.uss?fileID=7433441132597879392&amp;guid=01fc96ee4dcc3f64e916827ea3e4c25b&amp;type=3#MainMenu"/>
+    <ui:VisualElement name="root" class="root">
+        <ui:VisualElement name="main-panel" class="panel">
+            <ui:Label text="MY GAME" name="title-label" class="title"/>
+            <ui:VisualElement name="button-container" class="button-container">
+                <ui:Button text="Start" name="start-button" class="menu-button"/>
+                <ui:Button text="Options" name="options-button" class="menu-button"/>
+                <ui:Button text="Credits" name="credits-button" class="menu-button"/>
+                <ui:Button text="Quit" name="quit-button" class="menu-button"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="options-panel" class="panel hidden">
+            <ui:Label text="OPTIONS" class="title"/>
+            <ui:VisualElement class="options-content">
+                <ui:Label text="Master Volume" class="option-label"/>
+                <ui:Slider low-value="0" high-value="1" value="0.75" name="master-volume-slider" class="option-slider"/>
+                <ui:Label text="Music Volume" class="option-label"/>
+                <ui:Slider low-value="0" high-value="1" value="0.75" name="music-volume-slider" class="option-slider"/>
+                <ui:Label text="Sound Volume" class="option-label"/>
+                <ui:Slider low-value="0" high-value="1" value="0.75" name="sound-volume-slider" class="option-slider"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="options-buttons-row" class="options-buttons-row">
+                <ui:Button text="Save" name="options-save-button" class="menu-button save-button"/>
+                <ui:Button text="Back" name="options-back-button" class="menu-button back-button"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="credits-panel" class="panel hidden">
+            <ui:Label text="CREDITS" class="title"/>
+            <ui:VisualElement class="credits-content">
+                <ui:Label text="Design &amp; Programming: Your Name" class="credits-line"/>
+                <ui:Label text="Art: Your Name" class="credits-line"/>
+                <ui:Label text="Music: Your Name" class="credits-line"/>
+                <ui:Label text="Made with Unity" class="credits-line"/>
+            </ui:VisualElement>
+            <ui:Button text="Back" name="credits-back-button" class="menu-button back-button"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

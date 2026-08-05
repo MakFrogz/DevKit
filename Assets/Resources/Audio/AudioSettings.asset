@@ -17,3 +17,7 @@ MonoBehaviour:
   <DefaultCapacity>k__BackingField: 10
   <MaxPoolSize>k__BackingField: 100
   <MaxSoundInstances>k__BackingField: 20
+  <Mixer>k__BackingField: {fileID: 24100000, guid: fffd7ae5bf2c4624ca2b7ef8a6c23693, type: 2}
+  <MasterVolumeParameter>k__BackingField: MasterVolume
+  <SoundVolumeParameter>k__BackingField: SoundVolume
+  <MusicVolumeParameter>k__BackingField: MusicVolume

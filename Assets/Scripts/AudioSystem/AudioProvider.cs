@@ -1,4 +1,5 @@
-﻿using Singletons;
+﻿using System;
+using Singletons;
 using UnityEngine;
 
 namespace AudioSystem
@@ -22,6 +23,11 @@ namespace AudioSystem
                 _audioSettings.MusicVolumeParameter);
         }
 
+        private void Start()
+        {
+            _mixerController.Revert();
+        }
+
         public SoundBuilder CreateSoundBuilder()
         {
             return _audioManager.CreateSoundBuilder();
@@ -34,6 +40,7 @@ namespace AudioSystem
         public float GetSoundVolume() => _mixerController.GetSoundVolume();
         public float GetMusicVolume() => _mixerController.GetMusicVolume();
  
-        public void SaveVolumeSettings() => _mixerController.Save();
+        public void SaveVolumeChanges() => _mixerController.Save();
+        public void CancelVolumeChanges() => _mixerController.Revert();
     }
 }

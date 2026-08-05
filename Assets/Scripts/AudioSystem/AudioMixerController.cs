@@ -21,34 +21,51 @@ namespace AudioSystem
             _masterVolumeParam = masterVolumeParam;
             _soundVolumeParam = soundVolumeParam;
             _musicVolumeParam = musicVolumeParam;
- 
-            SetMasterVolume(PlayerPrefs.GetFloat(MasterVolumeKey, 1f));
-            SetSoundVolume(PlayerPrefs.GetFloat(SoundVolumeKey, 1f));
-            SetMusicVolume(PlayerPrefs.GetFloat(MusicVolumeKey, 1f));
         }
  
-        public void SetMasterVolume(float normalizedVolume) => SetVolume(_masterVolumeParam, MasterVolumeKey, normalizedVolume);
-        public void SetSoundVolume(float normalizedVolume) => SetVolume(_soundVolumeParam, SoundVolumeKey, normalizedVolume);
-        public void SetMusicVolume(float normalizedVolume) => SetVolume(_musicVolumeParam, MusicVolumeKey, normalizedVolume);
+        public void SetMasterVolume(float normalizedVolume) => SetVolume(_masterVolumeParam, normalizedVolume);
+        public void SetSoundVolume(float normalizedVolume) => SetVolume(_soundVolumeParam, normalizedVolume);
+        public void SetMusicVolume(float normalizedVolume) => SetVolume(_musicVolumeParam, normalizedVolume);
  
         public float GetMasterVolume() => PlayerPrefs.GetFloat(MasterVolumeKey, 1f);
         public float GetSoundVolume() => PlayerPrefs.GetFloat(SoundVolumeKey, 1f);
         public float GetMusicVolume() => PlayerPrefs.GetFloat(MusicVolumeKey, 1f);
+
+        public void Revert()
+        {
+            SetMasterVolume(GetMasterVolume());
+            SetSoundVolume(GetSoundVolume());
+            SetMusicVolume(GetMusicVolume());
+        }
  
-        public void Save() => PlayerPrefs.Save();
- 
-        private void SetVolume(string exposedParam, string prefsKey, float normalizedVolume)
+        public void Save()
+        {
+            PlayerPrefs.SetFloat(MasterVolumeKey, GetVolume(_masterVolumeParam));
+            PlayerPrefs.SetFloat(MusicVolumeKey, GetVolume(_musicVolumeParam));
+            PlayerPrefs.SetFloat(SoundVolumeKey, GetVolume(_soundVolumeParam));
+            PlayerPrefs.Save();
+        }
+
+        private void SetVolume(string exposedParam, float normalizedVolume)
         {
             normalizedVolume = Mathf.Clamp01(normalizedVolume);
             var decibels = normalizedVolume > 0.0001f ? Mathf.Log10(normalizedVolume) * 20f : MinDecibels;
- 
-            if (!_mixer.SetFloat(exposedParam, decibels))
+
+            if (_mixer.SetFloat(exposedParam, decibels))
             {
-                Debug.LogError($"AudioMixer parameter '{exposedParam}' not found. Did you expose it via right-click -> Expose in the mixer?");
                 return;
             }
- 
-            PlayerPrefs.SetFloat(prefsKey, normalizedVolume);
+            Debug.LogError($"AudioMixer parameter '{exposedParam}' not found. Did you expose it via right-click -> Expose in the mixer?");
+        }
+        
+        private float GetVolume(string exposedParam)
+        {
+            if (_mixer.GetFloat(exposedParam, out var decibels))
+            {
+                return decibels <= MinDecibels ? 0f : Mathf.Pow(10f, decibels / 20f);
+            }
+            Debug.LogError($"AudioMixer parameter '{exposedParam}' not found. Did you expose it via right-click -> Expose in the mixer?");
+            return 1f;
         }
     }
 }

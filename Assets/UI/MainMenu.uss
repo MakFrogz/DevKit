@@ -1,0 +1,116 @@
+.root {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(15, 15, 20, 1);
+}
+
+.panel {
+    align-items: center;
+    justify-content: center;
+    width: 480px;
+    padding: 40px;
+}
+
+.hidden {
+    display: none;
+}
+
+.title {
+    font-size: 48px;
+    -unity-font-style: bold;
+    color: rgb(240, 240, 240);
+    margin-bottom: 40px;
+    -unity-text-align: middle-center;
+    letter-spacing: 4px;
+}
+
+.button-container {
+    width: 100%;
+    align-items: center;
+}
+
+.menu-button {
+    width: 260px;
+    height: 52px;
+    margin-bottom: 16px;
+    font-size: 20px;
+    -unity-font-style: bold;
+    color: rgb(230, 230, 230);
+    background-color: rgba(45, 45, 55, 0.9);
+    border-width: 2px;
+    border-color: rgba(90, 90, 110, 1);
+    border-radius: 6px;
+    transition-property: background-color, scale;
+    transition-duration: 0.12s;
+}
+
+.menu-button:hover {
+    background-color: rgba(70, 70, 90, 1);
+    border-color: rgba(140, 140, 190, 1);
+}
+
+.menu-button:active {
+    background-color: rgba(100, 100, 140, 1);
+    scale: 0.97 0.97;
+}
+
+.options-buttons-row {
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.save-button {
+    width: 160px;
+    margin-right: 12px;
+    margin-bottom: 0;
+    background-color: rgba(50, 90, 55, 0.9);
+    border-color: rgba(90, 150, 100, 1);
+}
+
+.save-button:hover {
+    background-color: rgba(65, 120, 75, 1);
+    border-color: rgba(120, 190, 130, 1);
+}
+
+.back-button {
+    width: 160px;
+    margin-bottom: 0;
+}
+
+.options-content {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.option-label {
+    color: rgb(210, 210, 210);
+    font-size: 16px;
+    margin-top: 14px;
+    margin-bottom: 4px;
+}
+
+.option-slider {
+    width: 100%;
+}
+
+.option-toggle {
+    align-self: flex-start;
+}
+
+.option-dropdown {
+    width: 100%;
+}
+
+.credits-content {
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.credits-line {
+    color: rgb(200, 200, 200);
+    font-size: 16px;
+    margin-bottom: 8px;
+    -unity-text-align: middle-center;
+}
