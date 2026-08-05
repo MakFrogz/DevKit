@@ -1,5 +1,4 @@
-﻿using System;
-using TimeManagement.Timers.Formats;
+﻿using TimeManagement.Timers.Formats;
 using TMPro;
 using UnityEngine;
 
